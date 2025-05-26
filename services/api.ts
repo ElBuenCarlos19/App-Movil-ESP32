@@ -98,12 +98,10 @@ export const consultarObstaculo = async (token: string): Promise<boolean | null>
         Authorization: `Bearer ${token}`,
       },
     })
-
     if (!response.ok) {
       const errorData = await response.json()
       throw new Error(errorData.error || "Error al consultar obstáculo")
     }
-
     return await response.json()
   } catch (error) {
     return handleNetworkError(error, "consultarObstaculo")

@@ -101,6 +101,7 @@ export default function DashboardScreen() {
 
     try {
       const obstaculo = await consultarObstaculo(token)
+      console.log(obstaculo)
       if (obstaculo !== null) {
         setObstacleDetected(obstaculo)
         setConnectionError(false)
@@ -178,7 +179,7 @@ export default function DashboardScreen() {
       // Configurar nuevos intervalos
       estadosIntervalRef.current = setInterval(() => {
         loadEstados()
-      }, 2000)
+      }, 5000)
 
       obstaculoIntervalRef.current = setInterval(() => {
         loadObstaculo()

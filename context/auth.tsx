@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useState, useEffect, use } from "react"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Alert } from "react-native"
 import { API_URL } from "../config/api"
@@ -54,11 +54,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (username: string, password: string) => {
     try {
+      console.log(username, password);
       const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+    
         body: JSON.stringify({ username, password }),
       })
 
